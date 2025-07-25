@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 20px;
   font-family: 'Klee One', sans-serif;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
@@ -135,6 +136,7 @@ textarea {
   line-height: 1.6;
   overflow-y: auto;
   font-family: 'Klee One', sans-serif;
+  font-weight: 600;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
