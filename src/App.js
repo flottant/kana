@@ -246,12 +246,20 @@ function App() {
         <div className={`editor-section ${isFullScreen ? 'hidden' : ''}`}>
           <div className="editor-header">
             <h2>Input Area</h2>
-            <button
-              onClick={handleRefresh}
-              className="refresh-button"
-            >
-              Refresh
-            </button>
+            <div className="button-group">
+              <button
+                onClick={handleRefresh}
+                className="refresh-button"
+              >
+                Display
+              </button>
+              <button
+                onClick={() => setInputText('')}
+                className="clear-button"
+              >
+                Clear
+              </button>
+            </div>
           </div>
           <textarea
             key={refreshKey}
