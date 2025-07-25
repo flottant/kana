@@ -1,7 +1,261 @@
 .App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Klee One', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+}
+
+.font-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.font-control input {
+  width: 150px;
+}
+
+.editor-container {
+  display: flex;
+  height: calc(100vh - 120px);
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+}
+
+.editor-section {
+  flex: 1;
+  padding: 1rem;
+  min-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.preview-section {
+  flex: 1;
+  padding: 1rem;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  transition: all 0.3s ease;
+}
+
+/* Full screen styles */
+.hidden {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.full-width {
+  flex: 100%;
+  border-left: none;
+  transition: all 0.3s ease;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fullscreen-button {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fullscreen-button:hover {
+  background-color: #45a049;
+}
+
+/* 添加在 fullscreen-button 样式之后 */
+.refresh-button {
+  padding: 0.5rem 1rem;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+  background-color: #1976D2;
+}
+
+/* 添加在 preview-header 样式之后 */
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  border: none;
+  padding: 2rem;
+}
+
+.full-screen .preview-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Textarea styles */
+textarea {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: none;
+  line-height: 1.6;
+  overflow-y: auto;
+  font-family: 'Klee One', sans-serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Preview content styles */
+.preview-content {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  line-height: 2.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* Ruby styles */
+.ruby {
+  ruby-position: over;
+  font-size: 1em;
+}
+
+/* Kanji ruby styles */
+.ruby.kanji-ruby {
+  color: rgb(177, 96, 96) !important;
+}
+
+/* Katakana ruby styles */
+.ruby.katakana {
+  color: #6694c2 !important;
+}
+
+/* Ruby text styles */
+ruby rt {
+  font-size: 0.7em;
+  color: #333;
   text-align: center;
 }
 
+/* Katakana English translation styles */
+ruby rt.katakana-english {
+  color: #6694c2;
+}
+
+/* Loading styles */
+.loading {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.loading::after {
+  content: '...';
+  animation: ellipsis 1.5s infinite;
+}
+
+@keyframes ellipsis {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+}
+
+/* Text item styles */
+.text-item {
+  transition: all 0.2s ease;
+}
+
+.text-item:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* Font slider styles */
+.font-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+}
+
+.font-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.font-slider::-webkit-slider-thumb:hover {
+  background: #45a049;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .editor-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .editor-section,
+  .preview-section {
+    width: 100%;
+    border-left: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .preview-section {
+    border-bottom: none;
+  }
+}
+
+/* Default React app styles */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +289,58 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+[class^="text-color-"] span, [class^="text-color-"] rt {
+  color: inherit !important;
+}
+
+.pos-legend {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.pos-legend span {
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* 调整header样式以适应图例 */
+.header {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Floating POS Legend styles */
+.floating-legend {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  flex-wrap: wrap;
+  max-width: 80%;
+}
+
+.floating-legend span {
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* 调整header样式 */
+.header {
+  position: relative;
+  padding-top: 20px;
 }
